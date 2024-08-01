@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL;
-
 const AddQuestion = ({ setPage }) => {
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
@@ -22,7 +20,7 @@ const AddQuestion = ({ setPage }) => {
       correct_option: parseInt(correctOption, 10),
     };
 
-    axios.post(`${API_URL}/questions`, newQuestion)
+    axios.post('http://localhost:5646/questions', newQuestion)
       .then((response) => {
         console.log('Question added:', response.data);
         // Optionally, clear the form

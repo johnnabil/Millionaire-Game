@@ -26,7 +26,6 @@ const App = () => {
   const [page, setPage] = useState('home'); // State to manage current page
 
   const timerRef = useRef(null);
-  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (isNameEntered) {
@@ -46,7 +45,7 @@ const App = () => {
   }, [timer]);
 
   const fetchQuestions = () => {
-    axios.get(`${API_URL}/questions`)
+    axios.get('http://localhost:5646/questions')
       .then(response => {
         const shuffledQuestions = response.data.sort(() => Math.random() - 0.5);
         setQuestions(shuffledQuestions);
@@ -84,7 +83,7 @@ const App = () => {
 
   const handleFinish = () => {
     const playerScore = { name, score };
-    axios.post(`${API_URL}/scores`, playerScore)
+    axios.post('http://localhost:5646/scores', playerScore)
       .then(response => {
         console.log('Score saved:', response.data);
         setIsGameOver(true); // Show game over page
