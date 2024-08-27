@@ -16,8 +16,8 @@ app.use(cors({
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
 })); 
-app.use('/questions',questionsRoute);
-app.use('/scores', scoresRoute);
+app.use('/api/questions',questionsRoute);
+app.use('/api/scores', scoresRoute);
 
 mongoose
     .connect(process.env.MONGO_URL)

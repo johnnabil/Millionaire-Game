@@ -45,7 +45,7 @@ const App = () => {
   }, [timer]);
 
   const fetchQuestions = () => {
-    axios.get('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/questions')
+    axios.get('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/api/questions')
       .then(response => {
         const shuffledQuestions = response.data.sort(() => Math.random() - 0.5);
         setQuestions(shuffledQuestions);
@@ -83,7 +83,7 @@ const App = () => {
 
   const handleFinish = () => {
     const playerScore = { name, score };
-    axios.post('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/scores', playerScore)
+    axios.post('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/api/scores', playerScore)
       .then(response => {
         console.log('Score saved:', response.data);
         setIsGameOver(true); // Show game over page
