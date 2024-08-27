@@ -11,7 +11,11 @@ import cors from 'cors';
 config();
 const app = express();
 app.use(express.json());
-app.use(cors()); 
+app.use(cors({
+    origin: 'https://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app', // Replace with your frontend URL
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true
+})); 
 app.use('/questions',questionsRoute);
 app.use('/scores', scoresRoute);
 
