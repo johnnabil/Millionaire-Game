@@ -45,6 +45,7 @@ const App = () => {
   }, [timer]);
 
   const fetchQuestions = () => {
+    // axios.get('http://localhost:5646/api/questions')
     axios.get('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/api/questions')
       .then(response => {
         const shuffledQuestions = response.data.sort(() => Math.random() - 0.5);
@@ -83,6 +84,7 @@ const App = () => {
 
   const handleFinish = () => {
     const playerScore = { name, score };
+    // axios.post('http://localhost:5646/api/scores', playerScore)
     axios.post('http://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app/api/scores', playerScore)
       .then(response => {
         console.log('Score saved:', response.data);

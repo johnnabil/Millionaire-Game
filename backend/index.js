@@ -10,15 +10,17 @@ import cors from 'cors';
 
 config();
 const app = express();
+const allowedOrigins = ['https://https://millionaire-game-johnnabil1-johnnabil1s-projects.vercel.app', 'http://localhost:5173'];
 app.use(express.json());
 app.use(cors({
-    origin: 'https://millionaire-game-odbs7pukc-johnnabil1s-projects.vercel.app', // Replace with your frontend URL
+    origin: allowedOrigins, // Replace with your frontend URL
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
 })); 
 app.use('/api/questions',questionsRoute);
 app.use('/api/scores', scoresRoute);
 
+const PORT = process.env.PORT || 5646;
 mongoose
     .connect(process.env.MONGO_URL)
     .then(()=>{
